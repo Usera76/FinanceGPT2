@@ -7,3 +7,4 @@ streamlit>=1.0.0
 pdfkit>=1.0.0
 python-dotenv>=1.0.0
 google-api-python-client
+fpdf2
