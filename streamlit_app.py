@@ -31,19 +31,45 @@ def get_base64_of_bin_file(bin_file):
    return base64.b64encode(data).decode()
 
 def set_background():
-   try:
-       bin_str = get_base64_of_bin_file('Foto.jpg')
-       page_bg_img = f'''
-       <style>
-       .stApp {{
-           background-image: url("data:image/jpg;base64,{bin_str}");
-           background-size: cover;
-       }}
-       </style>
-       '''
-       st.markdown(page_bg_img, unsafe_allow_html=True)
-   except Exception as e:
-       logger.error(f"Error setting background: {e}")
+    try:
+        bin_str = get_base64_of_bin_file('Foto.jpg')
+        page_bg_img = f'''
+        <style>
+        .stApp {{
+            background-image: url("data:image/jpg;base64,{bin_str}");
+            background-size: cover;
+        }}
+        /* Mejora del contraste para todos los elementos de texto */
+        .element-container, .stMarkdown, .stButton, .stSelectbox, .stText, 
+        .stNumberInput, .stDateInput, .stTextInput {{
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            margin: 2px 0;
+        }}
+        /* Ajuste específico para títulos */
+        h1, h2, h3 {{
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }}
+        /* Ajuste para métricas */
+        .stMetric {{
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 5px;
+        }}
+        /* Mejora para DataFrames */
+        .stDataFrame {{
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 5px;
+            border-radius: 5px;
+        }}
+        </style>
+        '''
+        st.markdown(page_bg_img, unsafe_allow_html=True)
+    except Exception as e:
+        logger.error(f"Error setting background: {e}")
 
 def initialize_session_state():
    default_states = {

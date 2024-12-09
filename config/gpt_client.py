@@ -29,7 +29,7 @@ class GPTClient:
         """Realiza búsqueda en Chrome usando Custom Search API"""
         try:
             service = build("customsearch", "v1", developerKey=self.search_api_key)
-            query = f"Información relevante para realizar proyecciones financieras para el {sector} en {region} durante los próximos meses"
+            query = f"Información relevante para realizar proyecciones financieras para el sector {sector} en la región de {region} durante los próximos meses"
             
             result = service.cse().list(
                 q=query,
