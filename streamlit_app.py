@@ -211,16 +211,16 @@ def display_visualizations(scenarios: dict, visualizer: ScenarioVisualizer):
    try:
        st.subheader("📈 Comparativa de Ingresos")
        fig_ingresos = visualizer.create_comparison_chart(scenarios, 'ingresos')
-       st.plotly_chart(fig_ingresos, use_container_width=True)
+       st.plotly_chart(fig_ingresos, key="ingresos_comparison", use_container_width=True)
        
        st.subheader("📊 Dashboard de Métricas")
        metrics = ['ingresos', 'beneficio_neto', 'margen_bruto']
        fig_dashboard = visualizer.create_metrics_dashboard(scenarios, metrics)
-       st.plotly_chart(fig_dashboard, use_container_width=True)
+       st.plotly_chart(fig_dashboard, key="metrics_dashboard", use_container_width=True)
        
        st.subheader("📈 Proyección Temporal")
        fig_timeline = visualizer.create_timeline_chart(scenarios, 'ingresos')
-       st.plotly_chart(fig_timeline, use_container_width=True)
+       st.plotly_chart(fig_timeline, key="timeline_projection", use_container_width=True)
    except Exception as e:
        st.error(f"❌ Error en visualizaciones: {str(e)}")
 
